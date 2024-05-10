@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     Layout = null;
+    Pizze pizza = new Pizze("Margerita", "Una nuova pizza fantasmagorica!", "~/img/pizza-margerita.jpg", 8.50);
 }
 
 <!DOCTYPE html>
@@ -16,7 +17,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PIZZA: se la ami, la cerchi.</a>
+                <a class="navbar-brand fw-bold fs-3" asp-area="" asp-controller="Home" asp-action="Index">PIZZA: se la ami, la cerchi.</a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -31,11 +32,26 @@
         </nav>
     </header>
     
+    <div class="container-fluid" style="background-image: url(../../wwwroot/img/jumbo-pizza.jpg)";>
+    </div>
+
     <div class="container">
         <main role="main" class="pb-3">
             <div class="text-center">
-                <h1 class="display-4">Welcome</h1>
-                <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+                <h1 class="display-4">Benvenuto/a nella fantastica pizzera!</h1>
+                <div class="col-6">
+                    @{
+                        <div class="card" style="width: 22rem;">
+                            <img src="@Url.Content(pizza.Img) " class="card-img-top" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">@pizza.Name</h5>
+                                <p class="card-text">@pizza.Description</p>
+                                <p class="text-success">€ @pizza.Price</p>
+                                <a href="#" class="btn btn-primary">Scopri i suoi ingredienti</a>
+                            </div>
+                        </div>
+                    }
+                </div>
             </div>
         </main>
     </div>
