@@ -1,7 +1,21 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     Layout = null;
-    Pizze pizza = new Pizze("Margerita", "Una nuova pizza fantasmagorica!", "~/img/pizza-margerita.jpg", 8.50);
+
+    Pizze margherita = new Pizze("Margherita", "Una nuova pizza fantasmagorica!", "~/img/pizza-margerita.jpg", 8.50);
+    Pizze americana = new Pizze("Americana", "La pizza Americana che non ti aspetti e che non vorresti!", "~/img/pizza-margerita.jpg", 9.50);
+    Pizze bismark = new Pizze("Bismark", "Pizza con tenero uovo di gallina bio allevata a su sabbia, posato su un tappeto di pomodoro e formaggio!", "~/img/pizza-margerita.jpg", 10.00);
+    Pizze diavola = new Pizze("Diavola", "Se vuoi scoprire cos'è l'inferno, assaggia questa pizza!", "~/img/pizza-margerita.jpg", 11.50);
+    Pizze vegetariana = new Pizze("Vegetariana", "Una pizza per chi si illude di mangiare meno grassi credendo di stare più in forma.", "~/img/pizza-margerita.jpg", 12.00);
+    Pizze speckBrie = new Pizze("Speck & Brie", "Semplicemente maiale e formaggio, una pizza come tante!", "~/img/pizza-margerita.jpg", 10.50);
+
+    List<Pizze> pizze = new List<Pizze>();
+    pizze.Add(margherita);
+    pizze.Add(americana);
+    pizze.Add(bismark);
+    pizze.Add(diavola);
+    pizze.Add(vegetariana);
+    pizze.Add(speckBrie);
 }
 
 <!DOCTYPE html>
@@ -15,7 +29,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 py-3">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold fs-3" asp-area="" asp-controller="Home" asp-action="Index">PIZZA: se la ami, la cerchi.</a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -32,22 +46,25 @@
         </nav>
     </header>
     
-    <div class="container-fluid" style="background-image: url(../../wwwroot/img/jumbo-pizza.jpg)";>
-    </div>
+    @*<div class="container-fluid" style="background-image: url(../../wwwroot/img/jumbo-pizza.jpg)";>
+    </div>*@
 
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="py-4">
             <div class="text-center">
                 <h1 class="display-4">Benvenuto/a nella fantastica pizzera!</h1>
-                <div class="col-6">
-                    @{
-                        <div class="card" style="width: 22rem;">
-                            <img src="@Url.Content(pizza.Img) " class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">@pizza.Name</h5>
-                                <p class="card-text">@pizza.Description</p>
-                                <p class="text-success">€ @pizza.Price</p>
-                                <a href="#" class="btn btn-primary">Scopri i suoi ingredienti</a>
+                <div class="row row-cols-1 row-cols-md-3 mt-5">
+                    @foreach (var pizza in pizze)
+                    {
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 border-success mb-3" style="width: 22rem;">
+                                <img src="@Url.Content(pizza.Img) " class="card-img-top" alt="@pizza.Name">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">@pizza.Name</h5>
+                                    <p class="card-text">@pizza.Description</p>
+                                    <p class="text-success fw-bold mt-auto">€ @pizza.Price</p>
+                                    <a href="#" class="btn btn-success mt-auto">Scopri i suoi ingredienti</a>
+                                </div>
                             </div>
                         </div>
                     }
