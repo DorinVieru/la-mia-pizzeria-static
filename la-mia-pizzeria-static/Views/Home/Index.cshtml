@@ -16,6 +16,8 @@
     pizze.Add(diavola);
     pizze.Add(vegetariana);
     pizze.Add(speckBrie);
+
+    string backHeader = "~/img/sfondo-header.png";
 }
 
 <!DOCTYPE html>
@@ -28,17 +30,21 @@
     <link rel="stylesheet" href="~/la_mia_pizzeria_static.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow py-4">
+    <header style="background-image: url('@Url.Content(backHeader)'); 
+                                                          background-repeat: no-repeat; 
+                                                          background-size: cover; 
+                                                          background-position: center;"
+                                                       ;>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
             <div class="container-fluid">
-                <a class="navbar-brand fw-bold fs-3 fst-italic" asp-area="" asp-controller="Home" asp-action="Index">Pizza Bomba</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index"><img class="w-25" src="~/img/logo-pizza-bomba.png" /></a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white fw-bold" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-white fw-bold" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>
